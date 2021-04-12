@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<style>
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+
+{% if error %}
+{{error}}
+<br>
+{%endif%}
+<div class="container text-center">
+<h1>Create products</h1>
+</div>
+
+
+<main class="form-signin text-center">
+  <form method="POST" action = "{% url 'create' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+<!--    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>-->
+
+    <div class="form-floating">
+      <input name="title" type="text" class="form-control" id="formName" placeholder="Product title">
+      <label for="formName">Title</label>
+    </div>
+    <div class="form-floating">
+      <input name="body" type="textbox" class="form-control" id="formBody" placeholder="Description">
+      <label for="formBody">body</label>
+    </div>
+    <div class="form-floating">
+      <input name="url" type="text" class="form-control" id="formURL" placeholder="Product URL">
+      <label for="formURL">URL</label>
+    </div>
+    <div class="form-floating">
+      <input name="image" type="file" class="form-control" id="formImage">
+      <label for="formImage">Image</label>
+    </div>
+    <div class="form-floating">
+      <input name="icon" type="file" class="form-control" id="formIcon">
+      <label for="formIcon">Icon</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-dark" type="submit">Add product</button>
+  </form>
+</main>
+
+{%endblock%}
